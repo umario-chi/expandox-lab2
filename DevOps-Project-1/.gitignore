@@ -5,6 +5,22 @@
 .terraform.lock.hcl
 terraform.tfvars
 
+# Ignore binaries
+kubectl
+terraform
+*.exe
+*.so
+*.dylib
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+# Ignore Terraform temp files
+.terraform/
+*.tfstate
+*.tfstate.backup
+EOF
 # Local Kubernetes configuration files
 /terraform-local/*config
 
