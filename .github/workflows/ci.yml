@@ -10,6 +10,8 @@ on:
             - "mini-finance-app/Dockerfile"
             - "mini-finance-app/requirements.txt"
             - "k8s/**"
+    # Ignore documentation changes
+    pull_request:
         paths-ignore:
             - "mini-finance-app/*.md"
             - "mini-finance-app/docs/**"
@@ -20,15 +22,19 @@ permissions:
 jobs:
     build_and_deploy:
         runs-on: ubuntu-latest
+        # Correct placement for the environment protection rules
+        environment: production
 
         steps:
             # 1️⃣ Checkout code
-            - uses: actions/checkout@v3
+            - name: Checkout code
+              uses: actions/checkout@v3
               with:
                   fetch-depth: 0
 
             # 2️⃣ Setup Docker Buildx
-            - uses: docker/setup-buildx-action@v2
+            - name: Setup Docker Buildx
+              uses: docker/setup-buildx-action@v2
 
             # 3️⃣ Login Docker (main/develop only)
             - name: Login to Docker Hub
@@ -48,12 +54,12 @@ jobs:
 
             # 5️⃣ Scan with Trivy
             - name: Scan Docker Image
-              uses: aquasecurity/trivy-action@v2
+              uses: aquasecurity/trivy-action@v0.20.0
               with:
                   image-ref: ${{ env.IMAGE_TAG }}
-                  format: table
+                  format: "table"
                   exit-code: 1
-                  severity: CRITICAL,HIGH
+                  severity: "CRITICAL,HIGH"
 
             # 6️⃣ Push Docker Image
             - name: Push Docker Image
@@ -79,7 +85,6 @@ jobs:
             # 8️⃣ Update Prod Manifest
             - name: Update Prod Manifest
               if: github.ref == 'refs/heads/main'
-              environment: production
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               run: |
