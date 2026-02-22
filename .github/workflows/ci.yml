@@ -10,6 +10,7 @@ on:
             - "DevOps-Project-1/mini-finance-app/Dockerfile"
             - "DevOps-Project-1/mini-finance-app/requirements.txt"
             - "DevOps-Project-1/k8s/**"
+            - ".github/workflows/ci.yml"
     pull_request:
         paths-ignore:
             - "DevOps-Project-1/mini-finance-app/*.md"
@@ -53,7 +54,7 @@ jobs:
 
             # 5️⃣ Scan with Trivy
             - name: Scan Docker Image
-              uses: aquasecurity/trivy-action@v0
+              uses: aquasecurity/trivy-action@v0.33.1
               with:
                   image-ref: ${{ env.IMAGE_TAG }}
                   format: "table"
