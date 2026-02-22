@@ -11,6 +11,7 @@ on:
             - "DevOps-Project-1/mini-finance-app/requirements.txt"
             - "DevOps-Project-1/k8s/**"
             - ".github/workflows/ci.yml"
+            - "DevOps-Project-1/mini-finance-app/index.html"
     pull_request:
         paths-ignore:
             - "DevOps-Project-1/mini-finance-app/*.md"
