@@ -7,7 +7,6 @@ terraform.tfvars
 
 # Ignore binaries
 kubectl
-terraform
 *.exe
 *.so
 *.dylib
