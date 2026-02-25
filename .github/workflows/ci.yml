@@ -46,7 +46,7 @@ jobs:
             - name: Build Docker Image
               id: docker_build
               run: |
-                  IMAGE_TAG=lakunzy/mini-finance-app:${{ github.sha }}
+                  IMAGE_TAG=umario0ps/mini-finance-app:${{ github.sha }}
                   docker build -t $IMAGE_TAG ./DevOps-Project-1/mini-finance-app
                   echo "IMAGE_TAG=$IMAGE_TAG" >> $GITHUB_ENV
 
@@ -64,8 +64,8 @@ jobs:
               if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
               run: |
                   docker push ${{ env.IMAGE_TAG }}
-                  docker tag ${{ env.IMAGE_TAG }} lakunzy/mini-finance-app:latest
-                  docker push lakunzy/mini-finance-app:latest
+                  docker tag ${{ env.IMAGE_TAG }} umario0ps/mini-finance-app:latest
+                  docker push umario0ps/mini-finance-app:latest
 
             # 7️⃣ Update Dev Manifest
             - name: Update Dev Manifest
