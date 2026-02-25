@@ -4,6 +4,8 @@ FROM nginx:stable-alpine
 # Remove the default Nginx welcome page
 RUN rm -rf /usr/share/nginx/html/*
 
+RUN apk update && apk upgrade && rm -rf /var/cache/apk/*
+
 # Copy the application's static content
 COPY . /usr/share/nginx/html/
 
