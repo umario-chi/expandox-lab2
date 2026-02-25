@@ -97,3 +97,4 @@ jobs:
                   git add DevOps-Project-1/k8s/production/manifests.yaml
                   git commit -m "ci: update prod image tag to ${{ github.sha }}" || echo "No changes to commit"
                   git push origin main
+                  
