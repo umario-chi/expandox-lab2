@@ -6,7 +6,7 @@ metadata:
 spec:
     project: finance-apps
     source:
-        repoURL: https://github.com/lakunzy7/expandox-lab2.git
+        repoURL: https://github.com/umario-chi/expandox-lab2.git
         targetRevision: main
         path: DevOps-Project-1/k8s/production
     destination:
