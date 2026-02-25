@@ -21,7 +21,7 @@ jobs:
         runs-on: ubuntu-latest
         name: Build, Scan, and Deploy
         #  Note: Ensure you have an environment named 'production' in your GitHub repo settings
-        environment: production
+        environment: ${{ github.ref == 'refs/heads/main' && 'production' || 'development' }}
 
         steps:
             # 1️⃣ Checkout code
