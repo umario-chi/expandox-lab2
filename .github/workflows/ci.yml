@@ -77,7 +77,7 @@ jobs:
                   git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
                   # Matches the specific manifests.yaml found in your tree
-                  sed -i "s|image: lakunzy/mini-finance-app:.*|image: ${{ env.IMAGE_TAG }}|g" DevOps-Project-1/k8s/dev/manifests.yaml
+                  sed -i "s|image: umario0ps/mini-finance-app:.*|image: ${{ env.IMAGE_TAG }}|g" DevOps-Project-1/k8s/dev/manifests.yaml
 
                   git add DevOps-Project-1/k8s/dev/manifests.yaml
                   git commit -m "ci: update dev image tag to ${{ github.sha }}" || echo "No changes to commit"
@@ -92,7 +92,7 @@ jobs:
                   git config --global user.name 'github-actions[bot]'
                   git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
-                  sed -i "s|image: lakunzy/mini-finance-app:.*|image: ${{ env.IMAGE_TAG }}|g" DevOps-Project-1/k8s/production/manifests.yaml
+                  sed -i "s|image: umario0ps/mini-finance-app:.*|image: ${{ env.IMAGE_TAG }}|g" DevOps-Project-1/k8s/production/manifests.yaml
 
                   git add DevOps-Project-1/k8s/production/manifests.yaml
                   git commit -m "ci: update prod image tag to ${{ github.sha }}" || echo "No changes to commit"
